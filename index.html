@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f7f4">
+  <title>Study Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Study Planner home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>study<span class="brand-light">space</span></span>
+    </a>
+    <div class="topbar-note"><span class="status-dot" aria-hidden="true"></span> Your learning, at your pace</div>
+  </header>
+
+  <main class="page-shell">
+    <section class="welcome" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">YOUR STUDY DESK</p>
+        <h1 id="page-title">Make today <span>count.</span></h1>
+        <p class="welcome-copy">Small steps add up. Pick one thing and get started.</p>
+      </div>
+      <div class="today-badge">
+        <span class="today-label">TODAY</span>
+        <span id="todayDate" class="today-date"></span>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Task summary">
+      <article class="stat-item stat-total">
+        <span class="stat-number" id="totalCount">0</span>
+        <span class="stat-label">Total tasks</span>
+        <span class="stat-mark" aria-hidden="true">01</span>
+      </article>
+      <article class="stat-item stat-done">
+        <span class="stat-number" id="completedCount">0</span>
+        <span class="stat-label">Completed</span>
+        <span class="stat-mark" aria-hidden="true">02</span>
+      </article>
+      <article class="stat-item stat-pending">
+        <span class="stat-number" id="pendingCount">0</span>
+        <span class="stat-label">In progress</span>
+        <span class="stat-mark" aria-hidden="true">03</span>
+      </article>
+    </section>
+
+    <div class="workspace">
+      <section class="task-area" aria-labelledby="tasks-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR PLAN</p>
+            <h2 id="tasks-heading">Study tasks</h2>
+          </div>
+          <span class="task-total"><span id="visibleCount">0</span> showing</span>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filter tasks">
+          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All <span id="allFilterCount">0</span></button>
+          <button class="filter-button" type="button" data-filter="pending" aria-pressed="false">Pending <span id="pendingFilterCount">0</span></button>
+          <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Completed <span id="completedFilterCount">0</span></button>
+        </div>
+
+        <div class="task-list" id="taskList" aria-live="polite"></div>
+      </section>
+
+      <aside class="editor-panel" aria-labelledby="form-heading">
+        <div class="editor-heading">
+          <span class="editor-index" aria-hidden="true">A.</span>
+          <div>
+            <p class="eyebrow">PLAN A SESSION</p>
+            <h2 id="form-heading">Add a task</h2>
+          </div>
+        </div>
+
+        <form id="taskForm">
+          <label class="field-label" for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" maxlength="60" placeholder="e.g. Biology" required>
+
+          <label class="field-label" for="description">What needs to get done?</label>
+          <textarea id="description" name="description" rows="3" maxlength="240" placeholder="Read chapter 4 and make notes" required></textarea>
+
+          <div class="field-row">
+            <div>
+              <label class="field-label" for="dueDate">Due date</label>
+              <input id="dueDate" name="dueDate" type="date" required>
+            </div>
+            <div>
+              <label class="field-label" for="priority">Priority</label>
+              <select id="priority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="submit-button" id="submitButton" type="submit">Add to planner <span aria-hidden="true">+</span></button>
+            <button class="cancel-button" id="cancelEdit" type="button" hidden>Cancel</button>
+          </div>
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+      </aside>
+    </div>
+
+    <footer class="page-footer"><span>One page at a time.</span><span>STUDYSPACE <span id="footerYear"></span></span></footer>
+  </main>
+</body>
+</html>
